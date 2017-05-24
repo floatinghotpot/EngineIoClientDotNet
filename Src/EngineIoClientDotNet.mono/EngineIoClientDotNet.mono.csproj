@@ -34,15 +34,10 @@
       <HintPath>packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SuperSocket.ClientEngine.Core.0.8.0.8\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="WebSocket4Net, Version=0.15.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\WebSocket4Net.0.15.0-beta6\lib\net45\WebSocket4Net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="websocket-sharp">
+      <HintPath>packages\WebSocketSharpFork.1.0.4.0\lib\net35\websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +93,19 @@
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Thread\EasyTimer.cs" />
+    <Compile Include="Client\WebSocketSharp4Net\WebSocketSharp4Net.cs" />
+    <Compile Include="Client\WebSocketSharp4Net\ClosedEventArgs.cs" />
+    <Compile Include="Client\WebSocketSharp4Net\DataReceivedEventArgs.cs" />
+    <Compile Include="Client\WebSocketSharp4Net\MessageReceivedEventArgs.cs" />
+    <Compile Include="Client\WebSocketSharp4Net\WebSocketVersion.cs" />
+    <Compile Include="Client\WebSocketSharp4Net\WebSocketState.cs" />
+    <Compile Include="Client\WebSocketSharp4Net\ErrEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Client\WebSocketSharp4Net\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

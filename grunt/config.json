@@ -13,7 +13,7 @@
     "nuget":"C:/ProgramData/chocolatey/bin/NuGet.exe"
   },
   "linux":{  
-    "msbuild":"xbuild",
+    "msbuild":"msbuild",
     "xunit_path":"/home/apollo/vendors/xunit"
   }
 } 

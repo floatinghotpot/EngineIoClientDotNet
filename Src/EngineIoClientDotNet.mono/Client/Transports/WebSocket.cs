@@ -2,7 +2,7 @@
 using Quobject.EngineIoClientDotNet.Parser;
 using System;
 using System.Collections.Generic;
-using WebSocket4Net;
+using WebSocketSharp4Net;
 
 namespace Quobject.EngineIoClientDotNet.Client.Transports
 {
@@ -10,7 +10,7 @@ namespace Quobject.EngineIoClientDotNet.Client.Transports
     {
         public static readonly string NAME = "websocket";
 
-        private WebSocket4Net.WebSocket ws;
+        private WebSocketSharp4Net.WebSocket ws;
         private List<KeyValuePair<string, string>> Cookies;
         private List<KeyValuePair<string, string>> MyExtraHeaders;
 
@@ -35,8 +35,9 @@ namespace Quobject.EngineIoClientDotNet.Client.Transports
             var log = LogManager.GetLogger(Global.CallerName());
             log.Info("DoOpen uri =" + this.Uri());
 
-            ws = new WebSocket4Net.WebSocket(this.Uri(), "", Cookies, MyExtraHeaders);
+            ws = new WebSocketSharp4Net.WebSocket(this.Uri(), "", Cookies, MyExtraHeaders);
             ws.EnableAutoSendPing = false;
+			/*
             if (ServerCertificate.Ignore)
             {
                 var security = ws.Security;
@@ -47,6 +48,7 @@ namespace Quobject.EngineIoClientDotNet.Client.Transports
                     security.AllowNameMismatchCertificate = true;
                 }
             }
+            */
             ws.Opened += ws_Opened;
             ws.Closed += ws_Closed;
             ws.MessageReceived += ws_MessageReceived;
@@ -65,7 +67,7 @@ namespace Quobject.EngineIoClientDotNet.Client.Transports
         private void ws_Opened(object sender, EventArgs e)
         {
             var log = LogManager.GetLogger(Global.CallerName());
-            log.Info("ws_Opened " + ws.SupportBinary);
+            //log.Info("ws_Opened " + ws.SupportBinary);
             this.OnOpen();
         }
 
@@ -88,7 +90,7 @@ namespace Quobject.EngineIoClientDotNet.Client.Transports
             this.OnData(e.Message);
         }
 
-        void ws_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
+        void ws_Error(object sender, ErrEventArgs e)
         {
             this.OnError("websocket error", e.Exception);
         }
