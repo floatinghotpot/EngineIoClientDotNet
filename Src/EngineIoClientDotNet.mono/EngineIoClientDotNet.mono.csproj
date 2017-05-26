@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EngineIoClientDotNet</RootNamespace>
     <AssemblyName>EngineIoClientDotNet</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,63 +29,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SuperSocket.ClientEngine.Core.0.8.0.8\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="WebSocket4Net, Version=0.15.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\WebSocket4Net.0.15.0-beta6\lib\net45\WebSocket4Net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.10.0.1\lib\net20\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine">
+      <HintPath>packages\SuperSocket.ClientEngine.Core.0.8.0.8\lib\net20\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSocket4Net">
+      <HintPath>packages\WebSocket4Net.0.15.0-beta6\lib\net20\WebSocket4Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Quobject.Collections.Immutable\AvlNode.cs">
-      <Link>Quobject.Collections.Immutable\AvlNode.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\IImmutableDictionary.cs">
-      <Link>Quobject.Collections.Immutable\IImmutableDictionary.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\IImmutableList.cs">
-      <Link>Quobject.Collections.Immutable\IImmutableList.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\IImmutableQueue.cs">
-      <Link>Quobject.Collections.Immutable\IImmutableQueue.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\IImmutableSet.cs">
-      <Link>Quobject.Collections.Immutable\IImmutableSet.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\IImmutableStack.cs">
-      <Link>Quobject.Collections.Immutable\IImmutableStack.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\ImmutableDictionary.cs">
-      <Link>Quobject.Collections.Immutable\ImmutableDictionary.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\ImmutableList.cs">
-      <Link>Quobject.Collections.Immutable\ImmutableList.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\ImmutableQueue.cs">
-      <Link>Quobject.Collections.Immutable\ImmutableQueue.cs</Link>
-    </Compile>
-    <Compile Include="..\Quobject.Collections.Immutable\ImmutableStack.cs">
-      <Link>Quobject.Collections.Immutable\ImmutableStack.cs</Link>
-    </Compile>
     <Compile Include="Client\EngineIOException.cs" />
-    <Compile Include="Client\HandshakeData.cs" />
-    <Compile Include="Client\Socket.cs" />
-    <Compile Include="Client\Transport.cs" />
-    <Compile Include="Client\Transports\Polling.cs" />
-    <Compile Include="Client\Transports\PollingXHR.cs" />
-    <Compile Include="Client\Transports\WebSocket.cs" />
-    <Compile Include="ComponentEmitter\Emitter.cs" />
-    <Compile Include="Modules\Global.cs" />
     <Compile Include="Modules\LogManager.cs" />
-    <Compile Include="Modules\ParseQS.cs" />
     <Compile Include="Modules\ServerCertificate.cs" />
     <Compile Include="Modules\UTF8.cs" />
     <Compile Include="Modules\UTF8Exception.cs" />
@@ -94,13 +50,55 @@
     <Compile Include="Parser\ByteBuffer.cs" />
     <Compile Include="Parser\IDecodePayloadCallback.cs" />
     <Compile Include="Parser\IEncodeCallback.cs" />
-    <Compile Include="Parser\Packet.cs" />
     <Compile Include="Parser\Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Thread\EasyTimer.cs" />
+    <Compile Include="Thread\EasyTimer_net20.cs" />
+    <Compile Include="Client\Socket_net20.cs" />
+    <Compile Include="Client\Transports\PollingXHR_net20.cs" />
+    <Compile Include="Modules\Global_net20.cs" />
+    <Compile Include="ComponentEmitter\Emitter_net20.cs" />
+    <Compile Include="Modules\ParseQS_net20.cs" />
+    <Compile Include="Client\HandshakeData_net20.cs" />
+    <Compile Include="Client\Transport_net20.cs" />
+    <Compile Include="Client\Transports\Polling_net20.cs" />
+    <Compile Include="Client\Transports\WebSocket_net20.cs" />
+    <Compile Include="Parser\Packet_net20.cs" />
+    <Compile Include="Immutable\IReadOnlyCollection_net20.cs" />
+    <Compile Include="Immutable\IReadOnlyDictionary_net20.cs" />
+    <Compile Include="Immutable\IReadOnlyList_net20.cs" />
+    <Compile Include="Client\Action_net20.cs" />
+    <Compile Include="..\Quobject.Collections.Immutable\AvlNode.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\AvlNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Quobject.Collections.Immutable\IImmutableDictionary.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\IImmutableDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\Quobject.Collections.Immutable\IImmutableList.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\IImmutableList.cs</Link>
+    </Compile>
+    <Compile Include="..\Quobject.Collections.Immutable\IImmutableQueue.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\IImmutableQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\Quobject.Collections.Immutable\IImmutableSet.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\IImmutableSet.cs</Link>
+    </Compile>
+    <Compile Include="..\Quobject.Collections.Immutable\IImmutableStack.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\IImmutableStack.cs</Link>
+    </Compile>
+    <Compile Include="..\Quobject.Collections.Immutable\ImmutableQueue.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\ImmutableQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\Quobject.Collections.Immutable\ImmutableStack.cs">
+      <Link>Immutable\Quobject.Collections.Immutable\ImmutableStack.cs</Link>
+    </Compile>
+    <Compile Include="Immutable\ImmutableDictionary_net20.cs" />
+    <Compile Include="Immutable\ImmutableList_net20.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Immutable\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
